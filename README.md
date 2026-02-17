@@ -1,114 +1,98 @@
-🎥 Video & Lecture Summarization
+# 🎥 Video & Lecture Summarization  
 
-An AI-powered video and lecture summarization pipeline built in a Google Colab environment.
-This project automatically converts long lecture or informational videos into concise, structured summaries using speech recognition and transformer-based NLP models.
+An AI-powered video and lecture summarization pipeline built in Google Colab.  
+The system converts long lecture or informational videos into concise, structured summaries using speech recognition and transformer-based NLP models.
 
-✨ Features
+---
 
-Automatic Audio Extraction – Extracts audio track from input video files using MoviePy/FFmpeg.
+## ✨ Features  
 
-Speech-to-Text Conversion – Transcribes spoken content into text using Whisper (ASR model).
+- **Audio Extraction** – Extracts audio from video using MoviePy / FFmpeg  
+- **Speech-to-Text** – Converts speech into text using OpenAI Whisper  
+- **Abstractive Summarization** – Generates natural summaries using BART / T5  
+- **Long Video Support** – Handles large transcripts using chunk processing  
+- **Cloud-Based Execution** – Runs efficiently on Google Colab (GPU supported)  
+- **Exportable Output** – Saves generated summaries as text files  
 
-Abstractive Text Summarization – Generates coherent summaries using transformer models like BART/T5.
+---
 
-Long Video Handling – Processes lengthy lectures by chunking transcripts before summarization.
+## 📦 Installation (Google Colab)
 
-Cloud Execution (Colab) – GPU-enabled processing without requiring high-end local hardware.
+Run in a Colab cell:
 
-Exportable Summaries – Saves generated summaries as text files for later use.
-
-📦 Installation (Google Colab)
-
-Run the following in a Colab cell:
-
+```bash
 pip install -q torch transformers sentencepiece
 pip install -q moviepy openai-whisper ffmpeg-python
 pip install -q numpy pandas matplotlib
+```
 
-
-If using GPU in Colab:
-
+Enable GPU:
+```
 Runtime → Change runtime type → GPU
+```
 
-🚀 Usage
+---
 
-1️⃣ Upload your lecture/video file in Colab
+## 🚀 Usage  
 
-2️⃣ Run the pipeline cells sequentially
+1. Upload your video file in Colab  
+2. Run all cells sequentially  
+3. The pipeline will:
+   - Extract audio  
+   - Transcribe speech  
+   - Generate summary  
+4. Final summary is displayed and saved  
 
-3️⃣ The system will:
+---
 
-Extract audio
+## 🛠 How It Works  
 
-Convert speech to text
+1. **Video Input** – User provides lecture video  
+2. **Audio Extraction** – Separate audio track  
+3. **Speech Recognition** – Whisper generates transcript  
+4. **Text Cleaning** – Preprocessing & formatting  
+5. **Summarization** – Transformer model generates summary  
+6. **Output Generation** – Summary saved & displayed  
 
-Generate summary
+---
 
-4️⃣ The final summary will be displayed and saved
+## ⚙ Configuration  
 
-🛠 How It Works
+Inside the configuration cell:
 
-Video Input – User provides a lecture or educational video.
-
-Audio Extraction – Audio is separated from video using MoviePy/FFmpeg.
-
-Speech Recognition – Whisper model converts audio into transcript text.
-
-Text Processing – Transcript is cleaned and formatted.
-
-Summarization – BART/T5 model generates an abstractive summary.
-
-Output – Final summarized text is displayed and stored.
-
-⚙ Configuration
-
-You can modify parameters inside the configuration cell:
-
-MAX_INPUT_LENGTH = 1024      # Token length per chunk
-MAX_SUMMARY_LENGTH = 150     # Summary size
+```python
+MAX_INPUT_LENGTH = 1024
+MAX_SUMMARY_LENGTH = 150
 MIN_SUMMARY_LENGTH = 50
 MODEL_NAME = "facebook/bart-large-cnn"
 
+WHISPER_MODEL = "base"  # tiny / base / small / medium / large
+```
 
-For Whisper:
+---
 
-WHISPER_MODEL = "base"   # tiny / base / small / medium / large
+## 🧠 Technologies Used  
 
-🧠 Technologies Used
+- Python  
+- PyTorch  
+- Hugging Face Transformers  
+- OpenAI Whisper  
+- MoviePy / FFmpeg  
+- NumPy / Pandas  
+- Google Colab  
 
-Python
+---
 
-PyTorch
+## 🎯 Capabilities  
 
-Hugging Face Transformers
+- Summarizes long lecture videos  
+- Produces natural language summaries  
+- Reduces content review time  
+- Scalable and extendable for multilingual support  
 
-OpenAI Whisper
+---
 
-MoviePy / FFmpeg
+## 📜 License  
 
-NumPy / Pandas
-
-Google Colab (GPU runtime)
-
-🎯 Capabilities
-
-Summarizes long lecture videos
-
-Reduces 1-hour lecture into short readable summary
-
-Produces natural language (abstractive) summaries
-
-Works entirely in cloud-based environment
-
-Easily extendable to multilingual support
-
-📜 License
-
-This project is intended for educational and research purposes.
-Please follow the respective licenses of:
-
-Whisper
-
-Hugging Face Transformers
-
-BART / T5 models
+For educational and research purposes.  
+Follow the respective licenses of Whisper and Hugging Face models.
